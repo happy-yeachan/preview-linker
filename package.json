@@ -21,6 +21,7 @@
   "homepage": "https://github.com/happy-yeachan/preview-linker#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "octokit": "^4.1.2"
   }
