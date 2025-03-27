@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename)
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
 const owner = process.env.GITHUB_OWNER
 const repo = process.env.GITHUB_REPO
-const branch = 'gh-pages'
+const branch = 'main'
 const previewPath = 'preview'
 
 app.get('/', (req, res) => {
@@ -30,9 +30,10 @@ app.get('/', (req, res) => {
 
 app.post('/add-preview', async (req, res) => {
   try {
-    const { id, title, desc, image, url } = req.query
+    const { title, desc, image, url } = req.query
+    const id = 'preview-' + Math.random().toString(36).substring(2, 8)
 
-    if (!id || !title || !desc || !image || !url) {
+    if (!title || !desc || !image || !url) {
       return res.status(400).json({ message: '모든 필드를 query로 전달해주세요.' })
     }
 
