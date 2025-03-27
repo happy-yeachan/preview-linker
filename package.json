@@ -1,0 +1,26 @@
+{
+  "name": "preview-linker",
+  "version": "1.0.0",
+  "description": "카카오톡 디스코드 등에 미리보기 내용을 추가해주는 서비스입니다.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happy-yeachan/preview-linker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/happy-yeachan/preview-linker/issues"
+  },
+  "homepage": "https://github.com/happy-yeachan/preview-linker#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^4.21.2",
+    "octokit": "^4.1.2"
+  }
+}
