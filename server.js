@@ -2,16 +2,31 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 import { Octokit } from 'octokit'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import fs from 'fs'
 
 dotenv.config()
 const app = express()
 app.use(bodyParser.json())
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN })
 const owner = process.env.GITHUB_OWNER
 const repo = process.env.GITHUB_REPO
 const branch = 'gh-pages'
 const previewPath = 'preview'
+
+app.get('/', (req, res) => {
+  const indexPath = path.join(__dirname, 'index.html')
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath)
+  } else {
+    res.send('<h1>Index file not found</h1>')
+  }
+})
 
 app.post('/add-preview', async (req, res) => {
   try {
