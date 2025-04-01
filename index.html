@@ -1,104 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Preview Linker</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-    input, textarea {
-      width: 100%;
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-    }
-    #preview {
-      margin-top: 2rem;
-      border: 1px solid #ddd;
-      padding: 1rem;
-      background: #fafafa;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=https://sites.google.com/view/snuaprilfoolsday/%ED%99%88">
+
 </head>
+
 <body>
-    <h1>🔗 Preview Link Generator</h1>
-    <p>미리보기 링크를 생성하고 바로 배포하세요!</p>
 
-    <label>제목</label>
-    <input type="text" id="title" placeholder="예: 모임생성2" />
-
-    <label>설명</label>
-    <textarea id="desc" placeholder="예: danny의 모임에 참여하세요!"></textarea>
-
-    <label>썸네일 이미지 URL</label>
-    <input type="text" id="image" placeholder="https://..." />
-
-    <label>리디렉션할 링크(URL)</label>
-    <input type="text" id="url" placeholder="https://naver.com" />
-
-    <button onclick="generateLink()">미리보기 링크 생성</button>
-    <div id="preview"></div>
-
-    <script>
-        function escape(str) {
-        return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, '&quot;');
-        }
-
-        function generateLink() {
-        const titleInput = document.getElementById('title');
-        const descInput = document.getElementById('desc');
-        const imageInput = document.getElementById('image');
-        const urlInput = document.getElementById('url');
-
-        if (!titleInput || !descInput || !imageInput || !urlInput) {
-            alert('필수 입력 요소를 찾을 수 없습니다.');
-            return;
-        }
-
-        const title = escape(titleInput.value.trim());
-        const desc = escape(descInput.value.trim());
-        const image = escape(imageInput.value.trim());
-        const url = escape(urlInput.value.trim());
-
-        if (!title || !desc || !image || !url) {
-            alert('모든 항목을 입력해주세요.');
-            return;
-        }
-
-        const filename = 'preview-' + Math.random().toString(36).substring(2, 8);
-
-        const html = `<!DOCTYPE html>
-                    <html lang="ko">
-                    <head>
-                    <meta charset="UTF-8">
-                    <meta property="og:title" content="${title}" />
-                    <meta property="og:description" content="${desc}" />
-                    <meta property="og:image" content="${image}" />
-                    <meta property="og:url" content="${url}" />
-                    <meta property="og:type" content="website" />
-                    <meta http-equiv="refresh" content="0; url=${url}" />
-                    <title>${title}</title>
-                    </head>
-                    <body>
-                    <script>location.href="${url}"</script>
-                    </body>
-                    </html>`;
-
-        document.getElementById('preview').innerHTML = `✅ <strong>${filename}.html</strong> 파일이 생성되었습니다.<br>
-            👉 아래 코드를 복사해 <code>/preview/${filename}.html</code>로 저장하거나 GitHub Pages에 배포하세요.<br><br>
-            <textarea style="width:100%; height:200px">${html}</textarea>
-            <p><strong>공유 링크:</strong><br>
-            <code>https://happy-yeachan.github.io/preview-linker/preview/${filename}.html</code></p>`;
-        }
-    </script>
 </body>
+
 </html>
